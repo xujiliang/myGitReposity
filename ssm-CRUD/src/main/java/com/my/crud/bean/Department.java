@@ -1,5 +1,5 @@
 package com.my.crud.bean;
-
+//²¿ÃÅ
 public class Department {
     private Integer deptId;
 
