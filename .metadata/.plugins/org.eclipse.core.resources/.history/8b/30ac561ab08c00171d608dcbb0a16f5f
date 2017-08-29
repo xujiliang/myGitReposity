@@ -1,0 +1,5 @@
+package com.xujiliang.basic.model;
+
+public class Pager {
+
+}

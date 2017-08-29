@@ -1,0 +1,19 @@
+package com.xjl.basic.dao;
+
+/**
+ * 公共的dao处理对象，该对象中包含了hibernate的所有操作和对SQL的操作
+ * @author XJL
+ *
+ * @param <T>
+ */
+public interface IBaseDao<T> {
+	
+	//添加对象
+	public T add(T t);
+	//更新对象
+	public void update(T t);
+	//根据Id删除对象
+	public void delete(int id);
+	//根据id加载对象
+	public void load(int id);
+}

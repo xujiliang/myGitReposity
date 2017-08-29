@@ -1,0 +1,35 @@
+package com.xjl.basic.model;
+
+public class SystemContext {
+	private static ThreadLocal<Integer> pageSize;
+	private static ThreadLocal<Integer> pageOffset;
+	private static ThreadLocal<String> sort;
+	private static ThreadLocal<String> order;
+	
+	public static Integer getPageSize() {
+		return pageSize.get();
+	}
+	public static void setPageSize(Integer _pageSize) {
+		 pageSize.set(_pageSize);
+	}
+	public static Integer getPageOffset() {
+		return pageOffset.get();
+	}
+	public static void setPageOffset(Integer _pageOffset) {
+		pageOffset.set(_pageOffset);
+	}
+	public static String getSort() {
+		return sort.get();
+	}
+	public static void setSort(String _sort) {
+		SystemContext.sort.set(_sort);
+	}
+	public static String getOrder() {
+		return order.get();
+	}
+	public static void setOrder(String _order) {
+		SystemContext.order.set(_order);
+	}
+	
+	
+}
