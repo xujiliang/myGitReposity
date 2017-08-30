@@ -2,10 +2,19 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
+			<item value="com.taotao"/>
+			<item value="taotao-manager-service"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="taotao-manager-web"/>
+			<item value="taotao-manager"/>
+			<item value="taotao-manager-service"/>
+			<item value="taotao-manager-dao"/>
+			<item value="taotao-manager-pojo"/>
+			<item value="taotao-parent"/>
+			<item value="taotao-common"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -42,8 +51,26 @@
 			<item value="[name]"/>
 		</list>
 	</section>
+	<section name="MavenModuleWizardParentPage">
+		<list key="moduleName">
+			<item value="taotao-manager-web"/>
+			<item value="taotao-manager-service"/>
+			<item value="taotao-manager-dao"/>
+			<item value="taotao-manager-pojo"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="E:\GitReposity\ssm-CRUD"/>
+			<item value="E:\GitReposity\taotao-parent\pom.xml"/>
 			<item value="E:\GitReposity\cms-parent"/>
 		</list>
 		<list key="projectNameTemplate">
@@ -57,13 +84,13 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
-			<item value="foo"/>
+			<item value="org.taotao.manager.web"/>
 		</list>
 		<list key="groupId">
-			<item value="com.xujiliang.basic"/>
+			<item value="com.taotao"/>
 		</list>
 		<list key="artifactId">
-			<item value="basic-hibernate"/>
+			<item value="taotao-manager-web"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>

@@ -1,0 +1,5 @@
+package com.xjl.basic.dao;
+
+public class BaseDao implements IBaseDao<T> {
+
+}
