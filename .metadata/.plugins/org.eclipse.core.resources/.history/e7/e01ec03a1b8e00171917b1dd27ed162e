@@ -1,0 +1,8 @@
+package com.taotao.test;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class TestPageHelper {
+	ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:spring/appplicationContext-*.xml");
+}
