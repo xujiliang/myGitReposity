@@ -1,5 +1,0 @@
-package com.xjl.basic.dao;
-
-public interface IBaseDao {
-
-}
