@@ -1,7 +1,0 @@
-jdbc.user=root
-jdbc.password=root
-jdbc.driverClass=com.mysql.jdbc.Driver
-jdbc.jdbcUrl=jdbc:mysql:///taotao?characterEncoding=utf-8
-
-jdbc.initPoolSize=5
-jdbc.maxPoolSize=10

@@ -1,0 +1,24 @@
+package com.taotao.service.impl;
+
+import org.springframework.stereotype.Service;
+
+import com.github.pagehelper.PageHelper;
+import com.taotao.common.pojo.EasyUIDataGridResult;
+import com.taotao.mapper.TbItemParamMapper;
+import com.taotao.service.ItemParamService;
+@Service
+public class ItemParamServiceImpl implements ItemParamService {
+
+	private TbItemParamMapper tbItemParemMapper;
+	@Override
+	public EasyUIDataGridResult getItemParamList(Integer page, int rows) {
+		// TODO Auto-generated method stub
+		PageHelper pageHelper = new PageHelper();
+		
+		
+		return null;
+	}
+
+	
+
+}

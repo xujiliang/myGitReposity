@@ -1,0 +1,16 @@
+package com.taotao.service.impl;
+
+import java.util.List;
+
+import com.taotao.pojo.TbItemParam;
+import com.taotao.service.ItemParamService;
+
+public class ItemParamServiceImpl implements ItemParamService {
+
+	@Override
+	public List<TbItemParam> getItemParamList(long itemId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

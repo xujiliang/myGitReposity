@@ -48,7 +48,8 @@ public class ItemServiceImpl implements ItemService {
 		result.setRows(list);
 		return result;
 	}
-
+	
+	//新增商品
 	@Override
 	public TaotaoResult createItem(TbItem item, String desc) {
 		// TODO Auto-generated method stub
