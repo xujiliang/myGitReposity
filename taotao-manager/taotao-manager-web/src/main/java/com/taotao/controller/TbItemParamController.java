@@ -1,9 +1,14 @@
 package com.taotao.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.taotao.common.pojo.EasyUIDataGridResult;
@@ -14,12 +19,12 @@ import com.taotao.service.ItemParamService;
 @RequestMapping("/item/param")
 public class TbItemParamController {
 	@Autowired
-	private ItemParamService itemParamController;
+	private ItemParamService itemParamService;
 	
 	@RequestMapping("/list")
 	@ResponseBody
 	public EasyUIDataGridResult getItemParam(Integer page,int rows){
-		EasyUIDataGridResult result = itemParamController.getItemParamList(page, rows);
+		EasyUIDataGridResult result = itemParamService.getItemParamList(page, rows);
 		System.out.println("111111");
 		return result;
 	}
@@ -29,7 +34,7 @@ public class TbItemParamController {
 	@ResponseBody
 	public TaotaoResult getItemParamBCid(@PathVariable Integer cid){
 		
-		TaotaoResult taotaoResult = itemParamController.getItemParamByCid(cid);
+		TaotaoResult taotaoResult = itemParamService.getItemParamByCid(cid);
 		
 		
 		return taotaoResult;
@@ -47,7 +52,34 @@ public class TbItemParamController {
 	@ResponseBody
 	public TaotaoResult insertItemParam(@PathVariable long cid,String paramData){
 		
-		TaotaoResult taotaoResult = itemParamController.insertItemParam(cid, paramData);
+		TaotaoResult taotaoResult = itemParamService.insertItemParam(cid, paramData);
 		return taotaoResult;
+	}
+	
+	
+	/**
+	 * 根据商品ids删除商品参数模板
+	 * /item/param/delete
+	 */
+	@RequestMapping(value="/delete",method=RequestMethod.POST)
+	@ResponseBody
+	public TaotaoResult deleteItemParam(@RequestParam String ids){
+		System.out.println(ids);
+		if(ids.contains(",")){
+			List<Long> list = new ArrayList<>();
+			String[] str_id = ids.split(",");
+			for (String id : str_id) {
+				list.add(Long.parseLong(id));
+				
+			}
+			TaotaoResult result = itemParamService.deleteItemsParam(list);
+			return result;
+		}else{
+			Long id = Long.parseLong(ids);
+			TaotaoResult result = itemParamService.deleteItemParamById(id);
+			return result;
+		}
+		
+		
 	}
 }

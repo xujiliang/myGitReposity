@@ -9,5 +9,7 @@ public interface ItemService {
 	
 	EasyUIDataGridResult getItemList(Integer page,int rows);
 	
-	TaotaoResult createItem(TbItem item,String desc);
+	TaotaoResult createItem(TbItem item,String desc,String itemparam);
+	
+	String getItemParamHtml(long id);
 }

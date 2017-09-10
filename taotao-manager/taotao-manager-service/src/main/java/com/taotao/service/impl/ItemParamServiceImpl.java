@@ -68,7 +68,36 @@ public class ItemParamServiceImpl implements ItemParamService {
 		
 		return TaotaoResult.ok();
 	}
+	
+	
 
+	/***
+	 * 删除单个商品规格模板
+	 */
+	
+	@Override
+	public TaotaoResult deleteItemParamById(long id) {
+		// TODO Auto-generated method stub
+		tbItemParemMapper.deleteByPrimaryKey(id);
+		return TaotaoResult.ok();
+	}
+
+	
+	/**
+	 * 批量删除商品模板信息
+	 */
+
+	@Override
+	public TaotaoResult deleteItemsParam(List<Long> list) {
+		// TODO Auto-generated method stub
+		
+		TbItemParamExample example = new TbItemParamExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andIdIn(list);
+		tbItemParemMapper.deleteByExample(example);
+		return TaotaoResult.ok();
+	}
+	
 	
 
 }

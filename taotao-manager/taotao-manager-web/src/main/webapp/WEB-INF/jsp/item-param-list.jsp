@@ -43,14 +43,27 @@
         iconCls:'icon-add',
         handler:function(){
         	TAOTAO.createWindow({
-        		url : "/item-param-add",
+        		url : "/item-param-add/",
         	});
         }
     },{
         text:'编辑',
         iconCls:'icon-edit',
         handler:function(){
-        	$.messager.alert('提示','该功能未实现!');
+        	
+        	var ids = getSelectionsIds();
+        	if(ids.length == 0){
+        		$.messager.alert('提示','未选中商品规格!');
+        		return ;
+        	}
+        	
+        		TAOTAO.createWindow({
+        			
+            		url : "/item-param-update",
+            	
+        	});
+        	//$.messager.alert('提示','该功能未实现!');
+        	 
         }
     },{
         text:'删除',
