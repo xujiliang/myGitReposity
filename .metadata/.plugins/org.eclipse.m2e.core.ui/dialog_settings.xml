@@ -8,8 +8,10 @@
 		<list key="name">
 		</list>
 		<list key="artifactId">
-			<item value="taotao-rest"/>
+			<item value="taotao-portal2"/>
 			<item value="taotao-parent"/>
+			<item value="taotao-portal"/>
+			<item value="taotao-rest"/>
 			<item value="taotao-manager-web"/>
 			<item value="taotao-manager"/>
 			<item value="taotao-manager-service"/>
@@ -70,6 +72,7 @@
 	</section>
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="E:\GitReposity\taotao-rest"/>
 			<item value="E:\GitReposity\ssm-CRUD"/>
 			<item value="E:\GitReposity\taotao-parent\pom.xml"/>
 			<item value="E:\GitReposity\cms-parent"/>
