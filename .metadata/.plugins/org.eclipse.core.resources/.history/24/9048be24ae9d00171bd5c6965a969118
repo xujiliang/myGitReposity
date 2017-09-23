@@ -1,0 +1,20 @@
+package tao.tao.redis;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import redis.clients.jedis.Jedis;
+
+public class RedisTest {
+
+	@Test
+	public void redisTest() {
+		Jedis jedis = new Jedis("192.168.112.128",6379);
+		jedis.set("k1", "100");
+		String result = jedis.get("k1");
+		System.out.println(result);
+		jedis.close();
+	}
+
+}

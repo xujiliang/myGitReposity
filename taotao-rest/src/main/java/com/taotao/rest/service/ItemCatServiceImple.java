@@ -4,19 +4,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.alibaba.druid.util.StringUtils;
+import com.taotao.common.pojo.JsonUtils;
+import com.taotao.common.pojo.TaotaoResult;
 import com.taotao.mapper.TbItemCatMapper;
 import com.taotao.pojo.TbItemCat;
 import com.taotao.pojo.TbItemCatExample;
 import com.taotao.pojo.TbItemCatExample.Criteria;
+import com.taotao.rest.component.JedisClient;
 import com.taotao.rest.pojo.CatNode;
 import com.taotao.rest.pojo.ItemCatResult;
+
+import redis.clients.jedis.Jedis;
 @Service
 public class ItemCatServiceImple implements ItemCatService {
 
 	@Autowired
 	private TbItemCatMapper tbItemCatMapper;
+	
+	@Autowired
+	private JedisClient jedisClient;
+	
+	@Value("REDIS_CATCATEGORY_KEY")
+	private String REDIS_CATCATEGORY_KEY;
 	
 	@Override
 	public ItemCatResult getItemCat() {
@@ -30,6 +43,17 @@ public class ItemCatServiceImple implements ItemCatService {
 	//
 	public List getItemCatList(long parentId){
 		
+		//从redis缓存中取数据，如果redis缓存中数据为空，则查询数据库；
+		try {
+			String json = jedisClient.hget(REDIS_CATCATEGORY_KEY, parentId+"");
+			if(!StringUtils.isEmpty(json)){
+				List resultList = JsonUtils.jsonToList(json, CatNode.class);
+				return resultList;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 		
 		TbItemCatExample example = new TbItemCatExample();
 		Criteria criteria = example.createCriteria();
@@ -66,9 +90,21 @@ public class ItemCatServiceImple implements ItemCatService {
 						}
 						
 					}
-			
-			
+			//向redis缓存中添加数据
+			try {
+				jedisClient.hset(REDIS_CATCATEGORY_KEY, parentId+"", JsonUtils.objectToJson(resultList));
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
 			
 		return resultList;
+	}
+
+	@Override
+	public TaotaoResult syncItemCat(long parentId) {
+		// TODO Auto-generated method stub
+		 jedisClient.hdel(REDIS_CATCATEGORY_KEY, parentId+"");
+		return TaotaoResult.ok();
 	}
 }

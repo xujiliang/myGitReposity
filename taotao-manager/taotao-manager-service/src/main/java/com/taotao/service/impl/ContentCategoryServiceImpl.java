@@ -91,12 +91,17 @@ public class ContentCategoryServiceImpl implements ContentCategoryService {
 	public TaotaoResult deleteCatNode(long id) {
 		// TODO Auto-generated method stub
 		TbContentCategory contentNode = tbContentCategoryMapper.selectByPrimaryKey(id);
+		
+		//如果该节点为叶子节点，执行删除
 		if(!contentNode.getIsParent()){
 			 tbContentCategoryMapper.deleteByPrimaryKey(id);
 			 return TaotaoResult.ok();
 		}else{
 			
+			//如果该节点为父节点执行递归删除
 			TaotaoResult result = deleteNode(id);
+			
+			//递归删除该以该节点id为父节点的子节点后，删除该父节点
 			tbContentCategoryMapper.deleteByPrimaryKey(id);
 			return result;
 		}
@@ -104,17 +109,26 @@ public class ContentCategoryServiceImpl implements ContentCategoryService {
 		
 	}
 	
-	//一个递归删除分类节点及其子节点
+	//递归删除分类节点及其子节点
 	public TaotaoResult deleteNode(long id){
 		
 		TbContentCategoryExample example = new TbContentCategoryExample();
 		Criteria criteria = example.createCriteria();
 		criteria.andParentIdEqualTo(id);
+		
+		//查找出该节点下所有以id为父节点的分类节点
 		List<TbContentCategory> contentCat = tbContentCategoryMapper.selectByExample(example);
+		
+		//遍历每一个分类节点
 		for (TbContentCategory tbContentCategory : contentCat) {
+			
+			//查找出该分类节点的parentId属性
 			long parentId = tbContentCategory.getParentId();
+			
+			//如果该分类节点为叶子节点，即isparent属性为0
 			if(!tbContentCategory.getIsParent()){
 				
+				//执行删除（以parentid属性删除该节点）
 				TbContentCategoryExample example2 = new TbContentCategoryExample();
 				Criteria criteria2 = example2.createCriteria();
 				criteria2.andParentIdEqualTo(parentId);
@@ -122,6 +136,7 @@ public class ContentCategoryServiceImpl implements ContentCategoryService {
 				tbContentCategoryMapper.deleteByExample(example2);
 				
 			}else{
+				//如果该节点部位叶子节点，即isparent属性为1，执行递归
 				deleteNode(tbContentCategory.getId());
 				
 			}

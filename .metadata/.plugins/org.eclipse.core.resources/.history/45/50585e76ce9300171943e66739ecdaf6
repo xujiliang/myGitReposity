@@ -1,7 +1,0 @@
-package com.taotao.service;
-
-import com.taotao.common.pojo.EasyUIDataGridResult;
-
-public interface ItemParamService {
-	EasyUIDataGridResult getItemParamList(Integer page, int rows);
-}

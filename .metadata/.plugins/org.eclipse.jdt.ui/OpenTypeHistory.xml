@@ -5,4 +5,10 @@
 <typeInfo handle="=taotao-manager-service/src\/main\/java&lt;com.taotao.service{ItemParamService.java[ItemParamService" modifiers="513" timestamp="1504926658397"/>
 <typeInfo handle="=taotao-manager-service/C:\/Program Files\/Java\/jre1.8.0_131\/lib\/rt.jar&lt;java.awt.event(ItemListener.class[ItemListener" modifiers="1537" timestamp="1499242313104"/>
 <typeInfo handle="=taotao-rest/src\/main\/java&lt;com.taotao.rest.service{ItemCatService.java[ItemCatService" modifiers="513" timestamp="1505048133560"/>
+<typeInfo handle="=taotao-manager-service/src\/main\/java&lt;com.taotao.service{ContentCategoryService.java[ContentCategoryService" modifiers="513" timestamp="1505133327919"/>
+<typeInfo handle="=taotao-manager-service/src\/main\/java&lt;com.taotao.service{ContentService.java[ContentService" modifiers="513" timestamp="1505179235090"/>
+<typeInfo handle="=taotao-manager-service/C:\/Users\/XJL\/.m2\/repository\/org\/apache\/httpcomponents\/httpcore\/4.3.2\/httpcore-4.3.2.jar&lt;org.apache.http.entity(ContentProducer.class[ContentProducer" modifiers="1537" timestamp="1504094162619"/>
+<typeInfo handle="=taotao-rest/src\/main\/java&lt;com.taotao.rest.service{ContentService.java[ContentService" modifiers="513" timestamp="1505207075380"/>
+<typeInfo handle="=taotao-rest/src\/main\/java&lt;com.taotao.rest.component{JedisClient.java[JedisClient" modifiers="513" timestamp="1505898392667"/>
+<typeInfo handle="=taotao-rest/C:\/Users\/XJL\/.m2\/repository\/redis\/clients\/jedis\/2.7.2\/jedis-2.7.2.jar&lt;redis.clients.jedis(HostAndPort.class[HostAndPort" modifiers="33" timestamp="1505827049544"/>
 </typeInfoHistroy>
